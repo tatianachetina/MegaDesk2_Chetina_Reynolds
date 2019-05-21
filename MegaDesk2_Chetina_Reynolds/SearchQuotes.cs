@@ -15,6 +15,9 @@ namespace MegaDesk_Chetina
         public SearchQuotes()
         {
             InitializeComponent();
+            List<DesktopMaterial> DesktopMaterialList = Enum.GetValues(typeof(DesktopMaterial)).Cast<DesktopMaterial>().ToList(); ;
+
+            comboMaterialSearchBox.DataSource = DesktopMaterialList;
         }
 
         private void ButtonMainMenu_Click(object sender, EventArgs e)
@@ -22,6 +25,11 @@ namespace MegaDesk_Chetina
             MainMenu viewMainMenu = (MainMenu)Tag;
             viewMainMenu.Show();
             this.Close();
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
