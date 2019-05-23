@@ -124,7 +124,7 @@
             this.buttonSaveQuotes.TabIndex = 10;
             this.buttonSaveQuotes.Text = "Save Quotes";
             this.buttonSaveQuotes.UseVisualStyleBackColor = true;
-       
+            this.buttonSaveQuotes.Click += new System.EventHandler(this.ButtonSaveQuotes_Click);
             // 
             // textBoxClientName
             // 
@@ -137,11 +137,6 @@
             // comboBoxRushDays
             // 
             this.comboBoxRushDays.FormattingEnabled = true;
-            this.comboBoxRushDays.Items.AddRange(new object[] {
-            "Rush 3 Day",
-            "Rush 5 Day",
-            "Rush 7 Day",
-            "NoRush 14 Day"});
             this.comboBoxRushDays.Location = new System.Drawing.Point(130, 169);
             this.comboBoxRushDays.Name = "comboBoxRushDays";
             this.comboBoxRushDays.Size = new System.Drawing.Size(120, 28);
@@ -150,12 +145,6 @@
             // comboBoxMaterial
             // 
             this.comboBoxMaterial.FormattingEnabled = true;
-            this.comboBoxMaterial.Items.AddRange(new object[] {
-            "Laminate",
-            "Oak",
-            "Rosewood",
-            "Veneer",
-            "Pine"});
             this.comboBoxMaterial.Location = new System.Drawing.Point(130, 216);
             this.comboBoxMaterial.Name = "comboBoxMaterial";
             this.comboBoxMaterial.Size = new System.Drawing.Size(120, 28);
@@ -164,15 +153,6 @@
             // comboBoxDrawers
             // 
             this.comboBoxDrawers.FormattingEnabled = true;
-            this.comboBoxDrawers.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7"});
             this.comboBoxDrawers.Location = new System.Drawing.Point(130, 263);
             this.comboBoxDrawers.Name = "comboBoxDrawers";
             this.comboBoxDrawers.Size = new System.Drawing.Size(120, 28);

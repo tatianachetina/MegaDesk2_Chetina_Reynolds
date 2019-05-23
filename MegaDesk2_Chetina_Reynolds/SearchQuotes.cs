@@ -14,10 +14,7 @@ namespace MegaDesk_Chetina
     {
         public SearchQuotes()
         {
-            InitializeComponent();
-            List<DesktopMaterial> DesktopMaterialList = Enum.GetValues(typeof(DesktopMaterial)).Cast<DesktopMaterial>().ToList(); ;
-
-            comboMaterialSearchBox.DataSource = DesktopMaterialList;
+            
         }
 
         private void ButtonMainMenu_Click(object sender, EventArgs e)
