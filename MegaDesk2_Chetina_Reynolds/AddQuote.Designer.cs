@@ -153,6 +153,15 @@
             // comboBoxDrawers
             // 
             this.comboBoxDrawers.FormattingEnabled = true;
+            this.comboBoxDrawers.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"});
             this.comboBoxDrawers.Location = new System.Drawing.Point(130, 263);
             this.comboBoxDrawers.Name = "comboBoxDrawers";
             this.comboBoxDrawers.Size = new System.Drawing.Size(120, 28);

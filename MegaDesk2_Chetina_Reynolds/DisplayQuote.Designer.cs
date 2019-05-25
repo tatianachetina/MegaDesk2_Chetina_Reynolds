@@ -65,6 +65,7 @@
             this.buttonMainMenu.TabIndex = 26;
             this.buttonMainMenu.Text = "Main Menu";
             this.buttonMainMenu.UseVisualStyleBackColor = true;
+            this.buttonMainMenu.Click += new System.EventHandler(this.ButtonMainMenu_Click);
             // 
             // labelDrawers
             // 

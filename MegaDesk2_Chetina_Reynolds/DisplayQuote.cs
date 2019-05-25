@@ -25,5 +25,11 @@ namespace MegaDesk_Chetina
             labelPriceOutput.Text = deskQuote.QuotePrice.ToString();
         }
 
+        private void ButtonMainMenu_Click(object sender, EventArgs e)
+        {
+            MainMenu viewMainMenu = new MainMenu();
+            viewMainMenu.Show();
+            this.Close();
+        }
     }
 }
