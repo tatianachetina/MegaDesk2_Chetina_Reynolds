@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace MegaDesk_Chetina
 {
     public class DeskQuote
     {
+        private int[,] _rushOrderPrices;
         public Desk Desk { get; set; }
 
         public string CustomerName { get; set; }
@@ -29,8 +31,6 @@ namespace MegaDesk_Chetina
         }
 
         // declared constant variables based on 
-        const decimal BASE_DESK_PRICE = 200.00M;
-        //const decimal SURFACE_AREA_PRICE = 1.00M;
         const decimal DRAWER_PRICE = 50.00M;
         const decimal OAK_PRICE = 200.00M;
         const decimal LAMINATE_PRICE = 100.00M;
@@ -44,13 +44,13 @@ namespace MegaDesk_Chetina
         {
 
             //declared variable
-            decimal quotePrice = BASE_DESK_PRICE;
+            decimal quotePrice;
 
             //calculate a surfacearea
             decimal surfaceArea = this.Desk.Depth * this.Desk.Width;
 
             //declare a variable
-            decimal surfaceAreaPrice;
+            decimal surfaceAreaPrice = 0;
 
             if (surfaceArea > 1000)
             {
@@ -86,22 +86,22 @@ namespace MegaDesk_Chetina
                     surfaceMaterialPrice = 125;
                     break;
             }
-            
+
 
             //this shoud be for calculate a delivery based on rush days
             //this text file it will store prices for 
-            int[,] rushOrderArray = getRushOrder(@"rushOrderPrices.txt");
+            getRushOrderPrices();
 
 
-            int RUSH_3DAY_LESS_THAN_1000 = rushOrderArray[0, 0];
-            int RUSH_3DAY_1000_TO_2000 = rushOrderArray[0, 1];
-            int RUSH_3DAY_GREATER_THAN_2000 = rushOrderArray[0, 2];
-            int RUSH_5DAY_LESS_THAN_1000 = rushOrderArray[1, 0];
-            int RUSH_5DAY_1000_TO_2000 = rushOrderArray[1, 1];
-            int RUSH_5DAY_GREATER_THAN_2000 = rushOrderArray[1, 2];
-            int RUSH_7DAY_LESS_THAN_1000 = rushOrderArray[2, 0];
-            int RUSH_7DAY_1000_TO_2000 = rushOrderArray[2, 1];
-            int RUSH_7DAY_GREATER_THAN_2000 = rushOrderArray[2, 2];
+            int RUSH_3DAY_LESS_THAN_1000 = _rushOrderPrices[0, 0];
+            int RUSH_3DAY_1000_TO_2000 = _rushOrderPrices[0, 1];
+            int RUSH_3DAY_GREATER_THAN_2000 = _rushOrderPrices[0, 2];
+            int RUSH_5DAY_LESS_THAN_1000 = _rushOrderPrices[1, 0];
+            int RUSH_5DAY_1000_TO_2000 = _rushOrderPrices[1, 1];
+            int RUSH_5DAY_GREATER_THAN_2000 = _rushOrderPrices[1, 2];
+            int RUSH_7DAY_LESS_THAN_1000 = _rushOrderPrices[2, 0];
+            int RUSH_7DAY_1000_TO_2000 = _rushOrderPrices[2, 1];
+            int RUSH_7DAY_GREATER_THAN_2000 = _rushOrderPrices[2, 2];
 
             var shippingPrice = 0;
             switch (ShippingType)
@@ -164,11 +164,47 @@ namespace MegaDesk_Chetina
             return quotePrice;
         }
 
-        
+        private void getRushOrderPrices()
+        {
+            _rushOrderPrices = new int[3, 3];
+            var pricesFile = @"rushOrderPrices.txt";
+
+            try
+            {
+                string[] prices = File.ReadAllLines(pricesFile);
+
+                int i = 0;
+                int j = 0;
+
+                foreach (string price in prices)
+                {
+                    _rushOrderPrices[i, j] = int.Parse(price);
+
+                    if (j == 2)
+                    {
+                        i++;
+                        j = 0;
+                    }
+
+                    else
+                    {
+                        j++;
+                    }
+             
+                }
+            }
+
+            catch(Exception e)
+            {
+                throw;
+            }
+
+
+        }
 
 
         }
 
 
     }
-}
+

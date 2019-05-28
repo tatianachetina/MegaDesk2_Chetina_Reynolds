@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+
 
 namespace MegaDesk_Chetina
 {
@@ -33,8 +35,8 @@ namespace MegaDesk_Chetina
 
         }
 
-        //this a json
-        public void AddNewQouteToFile(DeskQuote)
+        //write to json file
+        public void AddNewQuoteToFile(DeskQuote newDeskQuote)
         {
             string fileName = "quotes.json";
             List<DeskQuote> quotesList;
@@ -48,7 +50,7 @@ namespace MegaDesk_Chetina
                 quotesList = new List<DeskQuote>();
             }
 
-            quotesList.Add(newQuote);
+            quotesList.Add(newDeskQuote);
             string convertedJson = JsonConvert.SerializeObject(quotesList, Formatting.Indented);
 
             File.WriteAllText(fileName, convertedJson);
@@ -81,7 +83,10 @@ namespace MegaDesk_Chetina
                     QuoteDate = DateTime.Now,
                     ShippingType = (DeskQuote.RushOrder)comboBoxRushDays.SelectedValue
                 };
-            
+
+               deskQuote.QuotePrice =  deskQuote.GetQuotePrice();
+                AddNewQuoteToFile(deskQuote);
+
 
                 DisplayQuote DisplayQuote = new DisplayQuote(deskQuote);
                 DisplayQuote.Show();
