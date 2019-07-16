@@ -23,6 +23,7 @@ namespace MegaDesk_Chetina
             labelRushDaysOutput.Text = deskQuote.ShippingType.ToString();
             labelDrawersOutput.Text = deskQuote.Desk.NumberOfDrawers.ToString();
             labelPriceOutput.Text = deskQuote.QuotePrice.ToString();
+            labelDateOutput.Text = deskQuote.QuoteDate.ToString();
         }
 
         private void ButtonMainMenu_Click(object sender, EventArgs e)
@@ -31,5 +32,6 @@ namespace MegaDesk_Chetina
             viewMainMenu.Show();
             this.Close();
         }
+
     }
 }

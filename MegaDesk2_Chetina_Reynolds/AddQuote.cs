@@ -84,8 +84,9 @@ namespace MegaDesk_Chetina
                     ShippingType = (DeskQuote.RushOrder)comboBoxRushDays.SelectedValue
                 };
 
-               deskQuote.QuotePrice =  deskQuote.GetQuotePrice();
+                deskQuote.QuotePrice =  deskQuote.GetQuotePrice();
                 AddNewQuoteToFile(deskQuote);
+
 
 
                 DisplayQuote DisplayQuote = new DisplayQuote(deskQuote);

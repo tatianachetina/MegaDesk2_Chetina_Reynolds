@@ -39,6 +39,7 @@ namespace MegaDesk_Chetina
         const decimal VENEER_PRICE = 125.00M;
 
 
+
         //created a function that calculates total price
         public decimal GetQuotePrice()
         {
@@ -92,7 +93,6 @@ namespace MegaDesk_Chetina
             //this text file it will store prices for 
             getRushOrderPrices();
 
-
             int RUSH_3DAY_LESS_THAN_1000 = _rushOrderPrices[0, 0];
             int RUSH_3DAY_1000_TO_2000 = _rushOrderPrices[0, 1];
             int RUSH_3DAY_GREATER_THAN_2000 = _rushOrderPrices[0, 2];
@@ -102,6 +102,7 @@ namespace MegaDesk_Chetina
             int RUSH_7DAY_LESS_THAN_1000 = _rushOrderPrices[2, 0];
             int RUSH_7DAY_1000_TO_2000 = _rushOrderPrices[2, 1];
             int RUSH_7DAY_GREATER_THAN_2000 = _rushOrderPrices[2, 2];
+
 
             var shippingPrice = 0;
             switch (ShippingType)
@@ -167,7 +168,7 @@ namespace MegaDesk_Chetina
         private void getRushOrderPrices()
         {
             _rushOrderPrices = new int[3, 3];
-            var pricesFile = @"rushOrderPrices.txt";
+            var pricesFile = "rushOrderPrices.txt";
 
             try
             {
@@ -198,13 +199,7 @@ namespace MegaDesk_Chetina
             {
                 throw;
             }
-
-
         }
-
-
         }
-
-
     }
 

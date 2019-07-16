@@ -194,6 +194,7 @@
             this.labelDateOutput.Name = "labelDateOutput";
             this.labelDateOutput.Size = new System.Drawing.Size(236, 25);
             this.labelDateOutput.TabIndex = 45;
+            
             // 
             // DisplayQuote
             // 
